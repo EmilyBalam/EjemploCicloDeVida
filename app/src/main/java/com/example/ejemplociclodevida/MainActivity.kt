@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val boton = findViewById<Button>(R.id.boton)
 
         boton.setOnClickListener{
@@ -29,9 +30,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
         outState?.putString(NOMBRE,nombre)
     }
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this,"En transiscion",Toast.LENGTH_SHORT).show()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(this,"Aplicativo oculto",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this,"Aplicativo visible",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this,"Aplicativo destruida",Toast.LENGTH_SHORT).show()
+    }
 
 }
